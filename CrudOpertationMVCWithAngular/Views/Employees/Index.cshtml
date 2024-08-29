@@ -1,0 +1,106 @@
+﻿@*@model IEnumerable<CrudOpertationMVCWithAngular.Models.Employee>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.EmployeeID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.EmployeeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.EmployeeID })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
+
+
+<script src="~/Scripts/angular.min.js"></script>
+
+<script src="~/Scripts/angular/Module.js"></script>
+<script src="~/Scripts/angular/Controller.js"></script>
+<div ng-app="employeeApp" ng-controller="Mycontroller">
+    <h2>Employee List</h2>
+    <!--<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>-->
+    <!-- Ensure ng-repeat is correctly binding the data -->
+    <!--<tr ng-repeat="employee in GetEmployees">
+                    <td>{{employee.EmployeeID}}</td>
+                    <td>{{employee.Name}}</td>
+                    <td>{{employee.Position}}</td>
+                    <td>{{employee.Salary | currency}}</td>
+                    <td>
+                        <button ng-click="updateEmployee(employee)">Edit</button>
+                        <button ng-click="deleteEmployee(employee.EmployeeID)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>-->
+    <!-- Form for Adding/Updating an Employee -->
+    <div>
+        <input type="text" ng-model="EmployeeID" placeholder="Employee ID" />
+        <input type="text" ng-model="Name" placeholder="Name" />
+        <input type="text" ng-model="Position" placeholder="Position" />
+        <input type="text" ng-model="Salary" placeholder="Salary" />
+        <button ng-click="AddEmployee()">Add Employee</button>
+        <button ng-click="UpdateEmployee()">Update Employee</button>
+    </div>
+
+    <!-- Employee List with Update/Delete buttons -->
+    <table>
+        <tr ng-repeat="employee in GetEmployees">
+            <td>{{employee.EmployeeID}}</td>
+            <td>{{employee.Name}}</td>
+            <td>{{employee.Position}}</td>
+            <td>{{employee.Salary}}</td>
+            <td>
+                <button ng-click="SetEmployee(employee)">Edit</button>
+                <button ng-click="DeleteEmployee(employee.EmployeeID)">Delete</button>
+            </td>
+        </tr>
+    </table>
+

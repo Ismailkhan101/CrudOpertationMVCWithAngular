@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Read";
+}
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/Crudseparate/Crudseparate.js"></script>
+
+<h2>Read</h2>
+@*<script src="~/Scripts/angular.js"></script>*@
+<div ng-app="myApp">
+    <div ng-controller="myCtrl" ng-init="GetAllData()">
+
+
+
+        <h2>Employee List</h2><br />
+        <a href="/Curdseparatepages/Insert">Add new</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in employees">
+                    <td>{{ emp.Name }}</td>
+                    <td>{{ emp.Position }}</td>
+                    <td>{{ emp.Salary }}</td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="UpdateEmp(emp)">Update</button>
+                        <button class="btn btn-danger" ng-click="DeleteEmp(emp)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
