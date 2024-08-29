@@ -79,5 +79,6 @@ app.controller("myCtrl", function ($scope, $http, $window) {
     };
 
     // Initialize data when the page loads (for list view or update page)
+
     $scope.GetAllData();
 });
